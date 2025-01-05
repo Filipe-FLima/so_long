@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:30:42 by flima             #+#    #+#             */
-/*   Updated: 2025/01/04 17:31:01 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/05 17:23:42 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,17 @@ void	free_map(t_game_data *game)
 		i++;	
 	}
 	free(game->map);
+}
+
+void	free_visited(int **visited, t_game_data *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->map_rows)
+	{
+		free(visited[i]);
+		i++;
+	}
+	free(visited);
 }

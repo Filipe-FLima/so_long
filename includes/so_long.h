@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/04 21:22:08 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/05 17:23:55 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_game_data
 	int		player_row;
 	int		player_col;
 	int		exit_row;
-	int		exit_row;
+	int		exit_col;
 	
 }			t_game_data;
 
@@ -38,7 +38,10 @@ void	check_map_dimensions(t_game_data *game);
 void	check_map_isvalid(t_game_data *game);
 void	check_map_walls(t_game_data *game, int row, int col);
 void	check_all_characters(t_game_data *game, int i, int j);
+void	check_valid_path(t_game_data *game);
+void	player_exit_position(t_game_data *game);
 //free functions
 void	free_map(t_game_data *game);
+void	free_visited(int **visited, t_game_data *game);
 
 #endif
