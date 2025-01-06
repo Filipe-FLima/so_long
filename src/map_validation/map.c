@@ -6,12 +6,11 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:06:08 by flima             #+#    #+#             */
-/*   Updated: 2025/01/04 21:15:32 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/06 19:36:47 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-#include <stdio.h>
+#include <so_long.h>
 
 void	check_valid_file(char	**argv, t_game_data *game)
 {
@@ -74,5 +73,5 @@ void	check_map_isvalid(t_game_data *game)
 	check_map_dimensions(game);
 	check_map_walls(game, game->map_rows, game->map_cols);
 	check_all_characters(game, i, j);
-	check_valid_path(game);
+	check_valid_path(game, i, j);
 }

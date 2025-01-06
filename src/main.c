@@ -6,11 +6,11 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:49:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/04 20:43:04 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/06 19:53:30 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include <so_long.h>
 
 void	print_errors_exit(int error)
 {
@@ -43,12 +43,14 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		check_valid_file(argv, &game);
+		// create_game_map(&game);
+		free_map(&game);
 	}
 	else
 	{
 		ft_putstr_fd("ERROR: Program does not accept more or less than 1 argument\n", 2);
 		exit(1);
 	}
-	ft_printf("all done");
+	ft_printf("all done"); // for test
 	return (0);
 }

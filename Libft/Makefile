@@ -6,14 +6,14 @@
 #    By: flima <flima@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/12 21:12:39 by flima             #+#    #+#              #
-#    Updated: 2025/01/04 13:56:28 by flima            ###   ########.fr        #
+#    Updated: 2025/01/06 16:03:48 by flima            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC= cc
-OBJ_DIR = objs/
+OBJ_DIR = objs
 CFLAGS = -Wall -Wextra -Werror -g -I../includes
 
 SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
@@ -29,7 +29,7 @@ SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		get_next_line.c get_next_line_utils.c \
 		ft_utils.c ft_nbr_tohex.c ft_printf.c \
 
-OBJS = $(SRCS:%.c=$(OBJ_DIR)%.o)
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 AR = ar rcs
 
@@ -39,7 +39,7 @@ $(NAME): $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
 	@echo "Library made!"
 
-$(OBJ_DIR)%.o: %.c
+$(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 	

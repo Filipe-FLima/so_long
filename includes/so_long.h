@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/05 17:23:55 by filipe           ###   ########.fr       */
+/*   Updated: 2025/01/06 18:13:48 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
  #define SO_LONG_H
  
 #include "libft.h"
+#include "mlx.h"
 
 typedef struct s_game_data
 {
+	void	*mlx;
+	void	*window;
 	char	**map;
 	int		map_rows;
 	int		map_cols;
@@ -38,7 +41,7 @@ void	check_map_dimensions(t_game_data *game);
 void	check_map_isvalid(t_game_data *game);
 void	check_map_walls(t_game_data *game, int row, int col);
 void	check_all_characters(t_game_data *game, int i, int j);
-void	check_valid_path(t_game_data *game);
+void	check_valid_path(t_game_data *game, int i, int j);
 void	player_exit_position(t_game_data *game);
 //free functions
 void	free_map(t_game_data *game);
