@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:06:08 by flima             #+#    #+#             */
-/*   Updated: 2025/01/06 19:36:47 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/07 14:48:53 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_valid_file(char	**argv, t_game_data *game)
 	int		fd;
 	char	*line;
 	int		i;
-	
+
 	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
 		print_errors_exit(-1);
 	fd = open(argv[1], O_RDONLY);
@@ -65,10 +65,10 @@ void	get_map_data(char	**argv, t_game_data *game, int rows)
 void	check_map_isvalid(t_game_data *game)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
-	j= 0;
+	j = 0;
 	game->collectibles = 0;
 	check_map_dimensions(game);
 	check_map_walls(game, game->map_rows, game->map_cols);

@@ -6,31 +6,43 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/06 18:13:48 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/07 21:13:40 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
- #define SO_LONG_H
- 
-#include "libft.h"
-#include "mlx.h"
+# define SO_LONG_H
+
+# include "libft.h"
+# include "../mlx/mlx.h"
+
+# define tile_size 42
+
+typedef struct s_textures
+{
+	void	*player;
+	void	*ground;
+	void	*colectable;
+	void	*exit;
+	void	*wall;
+}			t_textures;
 
 typedef struct s_game_data
 {
-	void	*mlx;
-	void	*window;
-	char	**map;
-	int		map_rows;
-	int		map_cols;
-	int		collectibles;
-	int		player_row;
-	int		player_col;
-	int		exit_row;
-	int		exit_col;
-	
-}			t_game_data;
+	void		*mlx;
+	void		*window;
+	char		**map;
+	int			map_rows;
+	int			map_cols;
+	int			collectibles;
+	int			player_row;
+	int			player_col;
+	int			exit_row;
+	int			exit_col;
+	int			moves;
+	t_textures	textures;
 
+}			t_game_data;
 
 int		main(int argc, char **argv);
 void	print_errors_exit(int error);
@@ -46,5 +58,9 @@ void	player_exit_position(t_game_data *game);
 //free functions
 void	free_map(t_game_data *game);
 void	free_visited(int **visited, t_game_data *game);
+//create mao/window
+void	get_images(t_game_data *game); //static??
+void	create_game_map(t_game_data *game);
+void	fill_map(t_game_data *game, int i, int j);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:30:42 by flima             #+#    #+#             */
-/*   Updated: 2025/01/06 19:36:50 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/07 14:44:32 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_map(t_game_data *game)
 	while (game->map[i] != NULL)
 	{
 		free(game->map[i]);
-		i++;	
+		i++;
 	}
 	free(game->map);
 }
