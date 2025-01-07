@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: flima <flima@student.42.fr>                +#+  +:+       +#+         #
+#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 19:00:22 by flima             #+#    #+#              #
-#    Updated: 2025/01/07 16:56:53 by flima            ###   ########.fr        #
+#    Updated: 2025/01/08 00:40:02 by filipe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ clean:
 	@rm -rf $(OBJS_DIR)
 	@$(MAKE) clean -C Libft
 
-fclean:
+fclean: clean
 	@$(MAKE) clean -C mlx
 	@$(MAKE) fclean -C Libft
 	rm -f $(NAME)

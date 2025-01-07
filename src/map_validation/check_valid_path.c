@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:24:35 by flima             #+#    #+#             */
-/*   Updated: 2025/01/07 16:36:00 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/08 00:37:26 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@ static void	visited_path(t_game_data *game, int row, int col, int **visited)
 {
 	if (game->map[row][col] == '1' || visited[row][col])
 		return ;
-	visited[row][col] = 1;
-	visited_path(game, row + 1, col, visited);
-	visited_path(game, row - 1, col, visited);
-	visited_path(game, row, col + 1, visited);
-	visited_path(game, row, col - 1, visited);
+	if (game->map[row][col] == 'E')
+		visited[row][col] = 1;
+	else
+	{
+		visited[row][col] = 1;
+		visited_path(game, row + 1, col, visited);
+		visited_path(game, row - 1, col, visited);
+		visited_path(game, row, col + 1, visited);
+		visited_path(game, row, col - 1, visited);
+	}
 }
-
 static int	**get_visited(t_game_data *game, int i, int j)
 {
 	int	**visited;
