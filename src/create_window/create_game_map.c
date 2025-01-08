@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_game_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:27:37 by flima             #+#    #+#             */
-/*   Updated: 2025/01/07 21:25:53 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/08 01:11:52 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ void	create_game_map(t_game_data *game)
 {
 	int	width;
 	int	height;
-	int	i;
-	int j;
 
-	i = 0;
-	j = 0;
 	width = game->map_cols * tile_size;
 	height = game->map_rows * tile_size;	
 	game->mlx = mlx_init();
@@ -36,7 +32,7 @@ void	create_game_map(t_game_data *game)
 		exit (1);
 	}	
 	get_images(game);
-	fill_map(game, i, j);
+	fill_floor_wall(game);
 }
 
 void	get_images(t_game_data *game)
@@ -66,8 +62,12 @@ void	get_images(t_game_data *game)
 	}
 }
 
-void	fill_map(t_game_data *game, int i, int j)
+void	fill_floor_wall(t_game_data *game)
 {
+	int i;
+	int j;
+
+	i = 0;
 	while (i < game->map_rows)
 	{
 		j = 0;
@@ -76,10 +76,28 @@ void	fill_map(t_game_data *game, int i, int j)
 			if (game->map[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->textures.wall, j * tile_size, i * tile_size);
-			else if (game->map[i][j] == '0')
+			else
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->textures.ground, j * tile_size, i * tile_size);
-			else if (game->map[i][j] == 'E')
+			j++;
+		}
+		i++;
+	}
+	fill_player_exit_colec(game);
+}
+
+void	fill_player_exit_colec(t_game_data *game)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < game->map_rows)
+	{
+		j = 0;
+		while (j < game->map_cols)
+		{
+			if (game->map[i][j] == 'E')
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->textures.exit, j * tile_size, i * tile_size);
 			else if (game->map[i][j] == 'C')

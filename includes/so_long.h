@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/07 21:13:40 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/08 01:10:59 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	free_visited(int **visited, t_game_data *game);
 //create mao/window
 void	get_images(t_game_data *game); //static??
 void	create_game_map(t_game_data *game);
-void	fill_map(t_game_data *game, int i, int j);
+void	fill_floor_wall(t_game_data *game);
+void	fill_player_exit_colec(t_game_data *game);
 
 #endif
