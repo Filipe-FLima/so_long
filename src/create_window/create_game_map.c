@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_game_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:27:37 by flima             #+#    #+#             */
-/*   Updated: 2025/01/08 01:11:52 by filipe           ###   ########.fr       */
+/*   Updated: 2025/01/09 14:26:58 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ void	get_images(t_game_data *game)
 	widght = tile_size;
 	height = tile_size;
 	game->textures.player = mlx_xpm_file_to_image(game->mlx, \
-	"assets/luffy.xpm", &widght, &height);
+	"assets/player.xpm", &widght, &height);
 	game->textures.ground = mlx_xpm_file_to_image(game->mlx, \
 	"assets/ground.xpm", &widght, &height);
 	game->textures.colectable = mlx_xpm_file_to_image(game->mlx, \
-	"assets/food.xpm", &widght, &height);
+	"assets/colectable.xpm", &widght, &height);
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx, \
-	"assets/merry.xpm", &widght, &height);
+	"assets/exit.xpm", &widght, &height);
 	game->textures.wall = mlx_xpm_file_to_image(game->mlx, \
-	"assets/water.xpm", &widght, &height);
+	"assets/wall.xpm", &widght, &height);
 	if (game->textures.player == NULL || game->textures.ground == NULL \
 		|| game->textures.colectable == NULL || game->textures.exit == NULL \
 		|| game->textures.wall == NULL)
@@ -73,12 +73,8 @@ void	fill_floor_wall(t_game_data *game)
 		j = 0;
 		while (j < game->map_cols)
 		{
-			if (game->map[i][j] == '1')
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->textures.wall, j * tile_size, i * tile_size);
-			else
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->textures.ground, j * tile_size, i * tile_size);
+			mlx_put_image_to_window(game->mlx, game->window, \
+			game->textures.ground, j * tile_size, i * tile_size);
 			j++;
 		}
 		i++;
@@ -97,7 +93,10 @@ void	fill_player_exit_colec(t_game_data *game)
 		j = 0;
 		while (j < game->map_cols)
 		{
-			if (game->map[i][j] == 'E')
+			if (game->map[i][j] == '1')
+				mlx_put_image_to_window(game->mlx, game->window, \
+				game->textures.wall, j * tile_size, i * tile_size);
+			else if (game->map[i][j] == 'E')
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->textures.exit, j * tile_size, i * tile_size);
 			else if (game->map[i][j] == 'C')
