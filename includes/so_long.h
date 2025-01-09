@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/09 14:21:02 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/09 19:13:17 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include "../mlx/mlx.h"
 
 # define tile_size 64
+# define ESC 65307
+# define LEFT 65361
+# define UP 65362
+# define RIGHT 65363
+# define DOWN 65364
 
 typedef struct s_textures
 {
@@ -57,11 +62,20 @@ void	check_valid_path(t_game_data *game, int i, int j);
 void	player_exit_position(t_game_data *game);
 //free functions
 void	free_map(t_game_data *game);
+int		free_all(t_game_data *game);
 void	free_visited(int **visited, t_game_data *game);
+void	free_textures(t_game_data *game);
 //create mao/window
 void	get_images(t_game_data *game); //static??
 void	create_game_map(t_game_data *game);
 void	fill_floor_wall(t_game_data *game);
 void	fill_player_exit_colec(t_game_data *game);
+//moviments funtions
+int		key_hook(int keycode, t_game_data *game);
+void	move_player(t_game_data *game, int keycode);
+void	move_up(t_game_data *game, int i, int j);
+void	move_down(t_game_data *game, int i, int j);
+void	move_left(t_game_data *game, int i, int j);
+void	move_right(t_game_data *game, int i, int j);
 
 #endif

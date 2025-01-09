@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:06:08 by flima             #+#    #+#             */
-/*   Updated: 2025/01/07 14:48:53 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/09 20:47:56 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	check_map_isvalid(t_game_data *game)
 	i = 0;
 	j = 0;
 	game->collectibles = 0;
+	game->moves = 1;
 	check_map_dimensions(game);
 	check_map_walls(game, game->map_rows, game->map_cols);
 	check_all_characters(game, i, j);

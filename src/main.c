@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:49:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/07 21:26:08 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/09 19:49:24 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ int	main(int argc, char **argv)
 	{
 		check_valid_file(argv, &game);
 		create_game_map(&game);
-		sleep(100);
-		free_map(&game);
+		mlx_key_hook(game.window, key_hook, &game);
+		mlx_hook(game.window, 17, 0, free_all, &game);
+		mlx_loop(game.mlx);
 	}
 	else
 	{

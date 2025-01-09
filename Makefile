@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: filipe <filipe@student.42.fr>              +#+  +:+       +#+         #
+#    By: flima <flima@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 19:00:22 by flima             #+#    #+#              #
-#    Updated: 2025/01/08 00:40:02 by filipe           ###   ########.fr        #
+#    Updated: 2025/01/09 21:00:10 by flima            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ MLX_FLAGS = -I$(INCLUDES_DIR) -L./mlx -lmlx -lX11 -lXext -lm
 
 SRCS = src/map_validation/check_map.c src/map_validation/check_valid_path.c \
 		src/map_validation/map.c src/free.c src/main.c \
-		src/create_window/create_game_map.c
+		src/create_window/create_game_map.c src/create_window/moves.c \
+		src/create_window/controllers.c
 		
 OBJ_O = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJS_DIR), $(OBJ_O))
@@ -29,14 +30,15 @@ OBJS = $(addprefix $(OBJS_DIR), $(OBJ_O))
 all: $(NAME)
 
 $(NAME): $(MLX) $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@echo "ALL DONE!"
 	
 $(LIBFT):
 	@$(MAKE) -C Libft
 
 $(MLX):
 	@if [ ! -d "mlx" ]; then \
-    git clone https://github.com/42Paris/minilibx-linux.git mlx; \
+    @git clone https://github.com/42Paris/minilibx-linux.git mlx; \
 	fi
 	@$(MAKE) -C mlx
 
@@ -56,7 +58,7 @@ clean:
 fclean: clean
 	@$(MAKE) clean -C mlx
 	@$(MAKE) fclean -C Libft
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
