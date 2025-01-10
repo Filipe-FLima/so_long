@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:49:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/09 19:49:24 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/10 19:42:53 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_errors_exit(int error)
 	if (error == -9)
 		ft_putstr_fd("Error\nInvalid path\n", 2);
 	if (error == -10)
-		ft_putstr_fd("Error\n Can not create the game window.\n", 2);
+		ft_putstr_fd("Error\nCan not create the game window.\n", 2);
 	exit(EXIT_FAILURE);
 }
 

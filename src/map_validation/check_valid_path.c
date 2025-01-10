@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
+/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:24:35 by flima             #+#    #+#             */
-/*   Updated: 2025/01/08 00:37:26 by filipe           ###   ########.fr       */
+/*   Updated: 2025/01/10 17:21:26 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ static void	visited_path(t_game_data *game, int row, int col, int **visited)
 		visited_path(game, row, col - 1, visited);
 	}
 }
-static int	**get_visited(t_game_data *game, int i, int j)
+static int	**get_visited(t_game_data *game)
 {
 	int	**visited;
+	int	i;
 
 	visited = (int **)ft_calloc(game->map_rows, sizeof(int *));
 	if (!visited)
@@ -40,16 +41,11 @@ static int	**get_visited(t_game_data *game, int i, int j)
 	i = 0;
 	while (i < game->map_rows)
 	{
-		j = 0;
-		while (j < game->map_cols)
+		visited[i] = (int *)ft_calloc(game->map_cols, sizeof(int));
+		if (!visited[i])
 		{
-			visited[i] = (int *)ft_calloc(game->map_cols, sizeof(int));
-			if (!visited[i])
-			{
-				free_map(game);
-				print_errors_exit(-4);
-			}
-			j++;
+			free_map(game);
+			print_errors_exit(-4);
 		}
 		i++;
 	}
@@ -61,7 +57,7 @@ void	check_valid_path(t_game_data *game, int i, int j)
 	int	**visited;
 
 	player_exit_position(game);
-	visited = get_visited(game, i, j);
+	visited = get_visited(game);
 	visited_path(game, game->player_row, game->player_col, visited);
 	i = 0;
 	while (i < game->map_rows)

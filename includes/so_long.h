@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/09 19:13:17 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/10 21:17:44 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 
 typedef struct s_textures
 {
-	void	*player;
+	void	*player1;
+	void	*player2;
 	void	*ground;
 	void	*colectable;
 	void	*exit;
@@ -45,6 +46,7 @@ typedef struct s_game_data
 	int			exit_row;
 	int			exit_col;
 	int			moves;
+	int			direction;
 	t_textures	textures;
 
 }			t_game_data;
@@ -62,9 +64,9 @@ void	check_valid_path(t_game_data *game, int i, int j);
 void	player_exit_position(t_game_data *game);
 //free functions
 void	free_map(t_game_data *game);
-int		free_all(t_game_data *game);
+int		free_all(t_game_data *game, int quit);
 void	free_visited(int **visited, t_game_data *game);
-void	free_textures(t_game_data *game);
+void	free_texture(t_game_data *game);
 //create mao/window
 void	get_images(t_game_data *game); //static??
 void	create_game_map(t_game_data *game);

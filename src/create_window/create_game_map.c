@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:27:37 by flima             #+#    #+#             */
-/*   Updated: 2025/01/09 20:46:05 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/10 21:22:29 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	create_game_map(t_game_data *game)
 	}
 	game->window = mlx_new_window(game->mlx, width, height, "so_long");
 	if (game->window == NULL)
-	{	
-		ft_printf("erro to get window\n"); //test
-		exit (1);
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+		free_map(game);
+		print_errors_exit(-10);
 	}	
 	get_images(game);
 	fill_floor_wall(game);
@@ -42,8 +44,10 @@ void	get_images(t_game_data *game)
 
 	widght = tile_size;
 	height = tile_size;
-	game->textures.player = mlx_xpm_file_to_image(game->mlx, \
-	"assets/player.xpm", &widght, &height);
+	game->textures.player1 = mlx_xpm_file_to_image(game->mlx, \
+	"assets/player_right.xpm", &widght, &height);
+	game->textures.player2 = mlx_xpm_file_to_image(game->mlx, \
+	"assets/player_left.xpm", &widght, &height);
 	game->textures.ground = mlx_xpm_file_to_image(game->mlx, \
 	"assets/ground.xpm", &widght, &height);
 	game->textures.colectable = mlx_xpm_file_to_image(game->mlx, \
@@ -52,13 +56,12 @@ void	get_images(t_game_data *game)
 	"assets/exit.xpm", &widght, &height);
 	game->textures.wall = mlx_xpm_file_to_image(game->mlx, \
 	"assets/wall.xpm", &widght, &height);
-	if (game->textures.player == NULL || game->textures.ground == NULL \
+	if ( game->textures.player1 == NULL || game->textures.ground == NULL \
 		|| game->textures.colectable == NULL || game->textures.exit == NULL \
-		|| game->textures.wall == NULL)
+		|| game->textures.wall == NULL || game->textures.player2 == NULL)
 	{
-		//free mlx e mapa
-		ft_printf("erro open imagens\n"); //test
-		exit(1);
+		ft_printf("Error\nCan't get the image\n");
+		free_all(game, 1);
 	}
 }
 
@@ -104,7 +107,7 @@ void	fill_player_exit_colec(t_game_data *game)
 				game->textures.colectable, j * tile_size, i * tile_size);
 			else if (game->map[i][j] == 'P')
 				mlx_put_image_to_window(game->mlx, game->window, \
-				game->textures.player, j * tile_size, i * tile_size);
+				game->textures.player1, j * tile_size, i * tile_size);
 			j++;
 		}
 		i++;
