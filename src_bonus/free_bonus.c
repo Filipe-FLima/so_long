@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:30:42 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 13:11:40 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/12 19:08:21 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "../includes/so_long_bonus.h"
 
 void	free_map(t_game_data *game)
 {
@@ -51,6 +51,25 @@ int	free_all(t_game_data *game, int quit)
 		exit(0);
 	return (0);
 }
+static void	free_cat_texture(t_game_data *game)
+{
+	if (game->textures.cat_img1 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img1);
+	if (game->textures.cat_img2 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img2);
+	if (game->textures.cat_img3 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img3);
+	if (game->textures.cat_img4 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img4);
+	if (game->textures.cat_img01 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img01);
+	if (game->textures.cat_img02 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img02);
+	if (game->textures.cat_img03 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img03);
+	if (game->textures.cat_img04 != NULL)
+		mlx_destroy_image(game->mlx, game->textures.cat_img04);
+}
 
 void	free_texture(t_game_data *game)
 {
@@ -66,4 +85,5 @@ void	free_texture(t_game_data *game)
 		mlx_destroy_image(game->mlx, game->textures.exit);
 	if (game->textures.wall != NULL)
 		mlx_destroy_image(game->mlx, game->textures.wall);
+	free_cat_texture(game);
 }

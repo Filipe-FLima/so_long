@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_valid_path.c                                 :+:      :+:    :+:   */
+/*   check_valid_path_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 21:24:35 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 13:12:54 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/12 15:44:24 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <so_long.h>
+#include "../includes/so_long_bonus.h"
 
 static void	visited_path(t_game_data *game, int row, int col, int **visited)
 {
