@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:49:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 16:26:35 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/13 17:30:16 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr_fd("ERROR: No more or less than 1 argument\n", 2);
+		ft_putstr_fd("Error\nNo more or less than 1 argument\n", 2);
 		exit(1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:27:37 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 20:19:15 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/13 17:38:21 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	get_images(t_game_data *game)
 		|| game->textures.wall == NULL || game->textures.player2 == NULL)
 	{
 		ft_printf("Error\nCan't get the image\n");
-		free_all(game, 1);
+		free_all(game, 1, 0);
 	}
 	get_cat_textures(game);
 }

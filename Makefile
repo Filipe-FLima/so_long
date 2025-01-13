@@ -6,11 +6,12 @@
 #    By: flima <flima@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/02 19:00:22 by flima             #+#    #+#              #
-#    Updated: 2025/01/12 18:48:04 by flima            ###   ########.fr        #
+#    Updated: 2025/01/13 17:54:44 by flima            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 INCLUDES_DIR = includes
 CFLAGS = -Wall -Wextra -g
 CC = cc
@@ -61,7 +62,7 @@ $(OBJS_DIR)%.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(MLX_FLAGS)
 
 bonus: $(MLX) $(OBJS_BONUS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX_FLAGS) -o $(NAME_BONUS)
 	@echo "ALL DONE BONUS!"
 
 rmmlx:
@@ -75,6 +76,7 @@ fclean: clean
 	@$(MAKE) clean -C mlx
 	@$(MAKE) fclean -C Libft
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 
 re: fclean all
 

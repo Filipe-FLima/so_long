@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:18:02 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 18:47:12 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/13 17:40:38 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 static	void	put_player_direction(t_game_data *game, int i, int j, int d)
 {
-	if (game->direction == 1 && d == 1)
+	if (d == 3)
+		mlx_put_image_to_window(game->mlx, game->window, \
+		game->textures.player2, (j - 1) * TILE_SIZE, i * TILE_SIZE);
+	else if (d == 4)
+		mlx_put_image_to_window(game->mlx, game->window, \
+		game->textures.player1, (j + 1) * TILE_SIZE, i * TILE_SIZE);
+	else if (game->direction == 1 && d == 1)
 		mlx_put_image_to_window(game->mlx, game->window, \
 		game->textures.player1, j * TILE_SIZE, (i - 1) * TILE_SIZE);
 	else if (game->direction == 2 && d == 1)
@@ -36,13 +42,13 @@ void	move_up(t_game_data *game, int i, int j)
 	{
 		ft_printf("%d\n", game->moves);
 		ft_printf("You found the treasure, but wait... Where's Zoro?\n");
-		free_all(game, 0);
+		free_all(game, 0, 1);
 	}
 	if (game->map[i - 1][j] == 'G')
 	{
 		ft_printf("%d\n", game->moves);
-		ft_printf("You found the treasure, but wait... Where's Zoro?\n");
-		free_all(game, 0);
+		ft_printf("A man's dreams are endless. Try again.\n");
+		free_all(game, 0, 1);
 	}
 	game->map[i][j] = '0';
 	game->map[i - 1][j] = 'P';
@@ -65,13 +71,13 @@ void	move_down(t_game_data *game, int i, int j)
 	{
 		ft_printf("%d\n", game->moves);
 		ft_printf("You found the treasure, but wait... Where's Zoro?\n");
-		free_all(game, 0);
+		free_all(game, 0, 1);
 	}
 	if (game->map[i + 1][j] == 'G')
 	{
 		ft_printf("%d\n", game->moves);
-		ft_printf("A man's dreams are endless. Try again\n");
-		free_all(game, 0);
+		ft_printf("A man's dreams are endless. Try again.\n");
+		free_all(game, 0, 1);
 	}
 	game->map[i][j] = '0';
 	game->map[i + 1][j] = 'P';
@@ -94,13 +100,13 @@ void	move_left(t_game_data *game, int i, int j)
 	{
 		ft_printf("%d\n", game->moves);
 		ft_printf("You found the treasure, but wait... Where's Zoro?\n");
-		free_all(game, 0);
+		free_all(game, 0, 1);
 	}
 	if (game->map[i][j - 1] == 'G')
 	{
 		ft_printf("%d\n", game->moves);
-		ft_printf("A man's dreams are endless. Try again\n");
-		free_all(game, 0);
+		ft_printf("A man's dreams are endless. Try again.\n");
+		free_all(game, 0, 1);
 	}
 	game->map[i][j] = '0';
 	game->map[i][j - 1] = 'P';
@@ -110,8 +116,7 @@ void	move_left(t_game_data *game, int i, int j)
 	game->textures.ground, j * TILE_SIZE, i * TILE_SIZE);
 	mlx_put_image_to_window(game->mlx, game->window, \
 	game->textures.ground, (j - 1) * TILE_SIZE, i * TILE_SIZE);
-	mlx_put_image_to_window(game->mlx, game->window, \
-	game->textures.player2, (j - 1) * TILE_SIZE, i * TILE_SIZE);
+	put_player_direction(game, i, j, 3);
 	ft_printf("%i\n", game->moves);
 	game->moves += 1;
 }
@@ -124,13 +129,13 @@ void	move_right(t_game_data *game, int i, int j)
 	{
 		ft_printf("%d\n", game->moves);
 		ft_printf("You found the treasure, but wait... Where's Zoro?\n");
-		free_all(game, 0);
+		free_all(game, 0, 1);
 	}
 	if (game->map[i][j + 1] == 'G')
 	{
 		ft_printf("%d\n", game->moves);
-		ft_printf("A man's dreams are endless. Try again\n");
-		free_all(game, 0);
+		ft_printf("A man's dreams are endless. Try again.\n");
+		free_all(game, 0, 1);
 	}
 	game->map[i][j] = '0';
 	game->map[i][j + 1] = 'P';
@@ -140,8 +145,7 @@ void	move_right(t_game_data *game, int i, int j)
 	game->textures.ground, j * TILE_SIZE, i * TILE_SIZE);
 	mlx_put_image_to_window(game->mlx, game->window, \
 	game->textures.ground, (j + 1) * TILE_SIZE, i * TILE_SIZE);
-	mlx_put_image_to_window(game->mlx, game->window, \
-	game->textures.player1, (j + 1) * TILE_SIZE, i * TILE_SIZE);
+	put_player_direction(game, i, j, 4);
 	ft_printf("%i\n", game->moves);
 	game->moves += 1;
 }

@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 20:02:08 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/13 17:38:10 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define CATLEFT 2
 # define CATDOWN 3
 
-
 typedef struct s_textures
 {
 	void	*player1;
@@ -44,6 +43,7 @@ typedef struct s_textures
 	void	*cat_img02;
 	void	*cat_img03;
 	void	*cat_img04;
+	void	*backgr;
 }			t_textures;
 
 typedef struct s_game_data
@@ -66,6 +66,7 @@ typedef struct s_game_data
 	int			cat_col;
 	int			cat_move;
 	int			cat_animation;
+	int			level;
 	t_textures	textures;
 
 }			t_game_data;
@@ -83,9 +84,9 @@ void	check_valid_path(t_game_data *game, int i, int j);
 void	player_exit_position(t_game_data *game);
 //free functions
 void	free_map(t_game_data *game);
-int		free_all(t_game_data *game, int quit);
+int	free_all(t_game_data *game, int quit, int init);
 void	free_visited(int **visited, t_game_data *game);
-void	free_texture(t_game_data *game);
+void	free_texture(t_game_data *game, int init);
 //create mao/window
 void	get_images(t_game_data *game); //static??
 void	create_game_map(t_game_data *game);
@@ -105,5 +106,7 @@ void	get_cat_textures(t_game_data *game);
 void	cat_move(t_game_data *game);
 void	cat_position(t_game_data *game);
 void	check_error_img(t_game_data *game);
+void	game_level(t_game_data *game);
+void	print_moves_win(t_game_data *game);
 
 #endif
