@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:57:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 15:44:15 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/17 15:52:55 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@ void	check_all_characters(t_game_data *game, int i, int j)
 			else if (game->map[i][j] == 'C')
 				game->collectibles += 1;
 			else if (game->map[i][j] == '0')
-				nb_spaces += 1;
+				game->space += 1;
 			j++;
 		}
 		i++;
 	}
-	verify_characters(game, nb_exit, nb_player, nb_spaces);
+	verify_characters(game, nb_exit, nb_player, game->space);
 }

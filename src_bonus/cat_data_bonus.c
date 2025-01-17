@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:29:15 by flima             #+#    #+#             */
-/*   Updated: 2025/01/13 17:08:05 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/17 15:57:33 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	add_cat(t_game_data *game)
 			if (game->map[i][j] == '0')
 			{
 				count++;
-				if (count == 80)
+				if (count == (game->space / 2) + 1)
 				{
 					game->map[i][j] = 'G';
 					count = -1;

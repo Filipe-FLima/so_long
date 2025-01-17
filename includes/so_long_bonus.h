@@ -6,7 +6,7 @@
 /*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:43:52 by flima             #+#    #+#             */
-/*   Updated: 2025/01/13 17:38:10 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/17 15:51:43 by flima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_game_data
 	int			cat_move;
 	int			cat_animation;
 	int			level;
+	int			space;
 	t_textures	textures;
 
 }			t_game_data;
