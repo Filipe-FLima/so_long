@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_game_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:27:37 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 13:14:32 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:08:08 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	get_images(t_game_data *game)
 		|| game->textures.wall == NULL || game->textures.player2 == NULL)
 	{
 		ft_printf("Error\nCan't get the image\n");
-		free_all(game, 1);
+		free_all(game, 1, 0);
 	}
+	get_cat_textures(game);
 }
 
 void	fill_floor_wall(t_game_data *game)
@@ -82,6 +83,7 @@ void	fill_floor_wall(t_game_data *game)
 		}
 		i++;
 	}
+	add_cat(game);
 	fill_player_exit_colec(game);
 }
 
@@ -99,9 +101,6 @@ void	fill_player_exit_colec(t_game_data *game)
 			if (game->map[i][j] == '1')
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->textures.wall, j * TILE_SIZE, i * TILE_SIZE);
-			else if (game->map[i][j] == 'E')
-				mlx_put_image_to_window(game->mlx, game->window, \
-				game->textures.exit, j * TILE_SIZE, i * TILE_SIZE);
 			else if (game->map[i][j] == 'C')
 				mlx_put_image_to_window(game->mlx, game->window, \
 				game->textures.colectable, j * TILE_SIZE, i * TILE_SIZE);

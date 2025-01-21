@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 13:49:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/12 13:11:55 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:08:08 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ int	main(int argc, char **argv)
 		create_game_map(&game);
 		mlx_key_hook(game.window, key_hook, &game);
 		mlx_hook(game.window, 17, 0, free_all, &game);
+		mlx_loop_hook(game.mlx, cat_frames, &game);
 		mlx_loop(game.mlx);
 	}
 	else
 	{
-		ft_putstr_fd("ERROR: No more or less than 1 argument\n", 2);
+		ft_putstr_fd("Error\nNo more or less than 1 argument\n", 2);
 		exit(1);
 	}
 	return (0);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat_moves_bonus.c                                  :+:      :+:    :+:   */
+/*   cat_moves.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 15:15:42 by flima             #+#    #+#             */
-/*   Updated: 2025/01/13 17:39:12 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:08:08 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long_bonus.h"
+#include <so_long.h>
 
 static	void	cat_move_right(t_game_data *game, int i, int j)
 {

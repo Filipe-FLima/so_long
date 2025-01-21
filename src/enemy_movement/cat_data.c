@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cat_data_bonus.c                                   :+:      :+:    :+:   */
+/*   cat_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:29:15 by flima             #+#    #+#             */
-/*   Updated: 2025/01/17 15:57:33 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:07:33 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long_bonus.h"
+#include <so_long.h>
 
 void	get_cat_textures(t_game_data *game)
 {

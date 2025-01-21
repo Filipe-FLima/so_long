@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flima <flima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: filipe <filipe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:57:14 by flima             #+#    #+#             */
-/*   Updated: 2025/01/10 17:08:11 by flima            ###   ########.fr       */
+/*   Updated: 2025/01/21 15:09:44 by filipe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	check_map_dimensions(t_game_data *game)
 {
 	int	cols;
-	int	rows;
 	int	i;
 
-	rows = game->map_rows;
 	i = 0;
 	while (game->map[i] != NULL)
 	{
@@ -104,11 +102,9 @@ void	check_all_characters(t_game_data *game, int i, int j)
 {
 	int	nb_exit;
 	int	nb_player;
-	int	nb_spaces;
 
 	nb_exit = 0;
 	nb_player = 0;
-	nb_spaces = 0;
 	while (i < game->map_rows)
 	{
 		j = 0;
@@ -121,10 +117,10 @@ void	check_all_characters(t_game_data *game, int i, int j)
 			else if (game->map[i][j] == 'C')
 				game->collectibles += 1;
 			else if (game->map[i][j] == '0')
-				nb_spaces += 1;
+				game->space += 1;
 			j++;
 		}
 		i++;
 	}
-	verify_characters(game, nb_exit, nb_player, nb_spaces);
+	verify_characters(game, nb_exit, nb_player, game->space);
 }
